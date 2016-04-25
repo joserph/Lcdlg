@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Fechas extends Model
+class Fecha extends Model
 {
     protected $table = 'fechas';
 

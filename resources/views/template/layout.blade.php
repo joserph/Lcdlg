@@ -28,6 +28,11 @@
 	<!-- Scripts -->
 	<script src="{{ asset('js/jquery.min.js') }}"></script>
 	<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+	<script>
+		$(function () {
+  			$('[data-toggle="tooltip"]').tooltip()
+		})
+	</script>
 	@yield('scripts')
 </body>
 </html>

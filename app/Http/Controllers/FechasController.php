@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Fechas;
+use App\Fecha;
+use App\Http\Requests\FechaRequest;
 
 
 class FechasController extends Controller
@@ -14,8 +15,8 @@ class FechasController extends Controller
 
     public function __construct()
     {
-        //$this->middleware('auth');
-        //$this->middleware('editor');
+        $this->middleware('auth');
+        $this->middleware('editor');
     }
 
     /**
@@ -25,13 +26,18 @@ class FechasController extends Controller
      */
     public function index()
     {
-        $fechas = Fechas::all();
+        $fechas = Fecha::all();
+        $contador = 0;
         //dd($fechas);
+        return view('admin.fechas.index')
+            ->with('fechas', $fechas)
+            ->with('contador', $contador);
+        /*
         return response()->json([
             'msg' => 'Success',
             'fechas' => $fechas->toArray()
             ], 200 
-        );
+        );*/
     }
 
     /**
@@ -41,7 +47,7 @@ class FechasController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.fechas.form');
     }
 
     /**
@@ -50,9 +56,10 @@ class FechasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FechaRequest $request)
     {
-        //
+        $fecha = new Fecha($request->all());
+        
     }
 
     /**
