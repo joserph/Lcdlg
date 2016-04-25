@@ -6,14 +6,16 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Fechas;
+
 
 class FechasController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->middleware('editor');
+        //$this->middleware('auth');
+        //$this->middleware('editor');
     }
 
     /**
@@ -23,7 +25,13 @@ class FechasController extends Controller
      */
     public function index()
     {
-        return view('admin.fechas.index');
+        $fechas = Fechas::all();
+        //dd($fechas);
+        return response()->json([
+            'msg' => 'Success',
+            'fechas' => $fechas->toArray()
+            ], 200 
+        );
     }
 
     /**
