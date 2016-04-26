@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Fecha;
-use App\Http\Requests\FechaRequest;
+use Validator;
 
 
 class FechasController extends Controller
@@ -56,9 +56,37 @@ class FechasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(FechaRequest $request)
+    public function store(Request $request)
     {
-        $fecha = new Fecha($request->all());
+        if(\Request::ajax())
+        {
+            //Validamos 
+            $validator = Validator::make($request->all(), [
+                'fecha' => 'required',
+                'tipo'  => 'required'
+            ]);
+            //Validamos si falla
+            if($validator->fails())
+            {
+                return response()->json([
+                    'success'   => false,
+                    'errors'    => $validator->getMessageBag()->toArray()
+                ]);
+            }else{
+                //Si todo va bién
+                $fecha = new Fecha($request->all());
+                //Guardamos
+                $fecha->save();
+                //Si lo guarda
+                if($fecha)
+                {
+                    return response()->json([
+                        'success'   => true,
+                        'menssage'  => 'Guardado con exito!'
+                    ]);
+                }
+            }
+        }
         
     }
 

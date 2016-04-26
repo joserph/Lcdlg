@@ -8,13 +8,33 @@
         <div class="col-lg-12">
             <h2 class="page-header">
                 Fechas 
-                <a href="{{ route('fechas.create') }}" class="pull-right btn btn-success" data-toggle="tooltip" data-placement="top" title="Agregar fecha"><i class="fa fa-plus-circle fa-fw"></i> Agregar</a>
+                <button type="button" class="pull-right btn btn-success" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle fa-fw"></i> Agregar</button>
             </h2>
             <ol class="breadcrumb">
                 <li class="active">
                     <i class="fa fa-calendar fa-fw"></i> Fechas registradas
                 </li>
             </ol>
+        </div>
+    </div>
+    <div class="text-center before"></div>
+    
+    <div class="success"></div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"><i class="fa fa-plus-circle fa-fw"></i> Agregar fecha</h4>
+                </div>
+                <div class="modal-body">
+                    @include('admin.fechas.form')
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
         </div>
     </div>
 
