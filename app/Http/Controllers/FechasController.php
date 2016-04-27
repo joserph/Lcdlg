@@ -26,12 +26,11 @@ class FechasController extends Controller
      */
     public function index()
     {
-        $fechas = Fecha::all();
-        $contador = 0;
+        $fechas = Fecha::orderBy('id', 'desc')->paginate(10);
+        //$contador = 0;
         //dd($fechas);
         return view('admin.fechas.index')
-            ->with('fechas', $fechas)
-            ->with('contador', $contador);
+            ->with('fechas', $fechas);
         /*
         return response()->json([
             'msg' => 'Success',
@@ -62,7 +61,7 @@ class FechasController extends Controller
         {
             //Validamos 
             $validator = Validator::make($request->all(), [
-                'fecha' => 'required',
+                'fecha' => 'required|unique:fechas',
                 'tipo'  => 'required'
             ]);
             //Validamos si falla
@@ -82,7 +81,8 @@ class FechasController extends Controller
                 {
                     return response()->json([
                         'success'   => true,
-                        'menssage'  => 'Guardado con exito!'
+                        'message'   => 'Fehca agregada con exito!',
+                        'fecha'     => $fecha->toArray()
                     ]);
                 }
             }

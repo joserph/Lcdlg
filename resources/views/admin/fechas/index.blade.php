@@ -20,7 +20,7 @@
     <div class="text-center before"></div>
     
     <div class="success"></div>
-    <!-- Modal -->
+    <!-- Modal Add-->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -42,24 +42,25 @@
     <div class="table-responsive">
         <table class="table table-striped table-hover table-responsive">
             <tr>
-                <th>#</th>
+                
                 <th class="text-center">Fecha</th>
-                <th class="text-center">Slug</th>  
+                <!--<th class="text-center">Slug</th> -->
                 <th class="text-center">Tipo</th>                 
                 <th class="text-center">Acción</th>                
             </tr>            
             @foreach ($fechas as $item)
-            <tr>
-                <td>{{ $contador += 1 }}</td>
+            <tr class="td-fecha">                
                 <td class="text-center">{{ $item->fecha }}</td>
-                <td class="text-center">{{ $item->url }}</td>
+                <!--<td class="text-center">{{ $item->url }}</td>-->
                 <td class="text-center">{{ $item->tipo }}</td>                
                 <td class="text-center">                                                                                  
-                    <a href="{{ route('fechas.edit', $item->id) }}" class="btn btn-warning btn-xs"><i class="fa fa-edit fa-fw"></i> Editar</a>                                
+                    <a href="{{ route('fechas.edit', $item->id) }}" class="btn btn-warning btn-xs"><i class="fa fa-edit fa-fw"></i> Editar</a>                            
                 </td>                
             </tr>
             @endforeach
         </table>
     </div>
     <!-- /.table -->
+    <div class="text-center">{!! $fechas->render() !!}</div>
+    
 @endsection

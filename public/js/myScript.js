@@ -25,7 +25,7 @@ $(document).ready(function()
 					var errors = '';
 						errors += '<div class="alert alert-warning">';
 						errors += '<button type="button" class="close" data-dismiss="alert">&times;</button>';
-						errors += '<h4><i class="fa fa-exclamation-triangle fa-fw"></i> Por favor corrige los siguentes errores:</h4>'
+						errors += '<h4><i class="fa fa-exclamation-triangle fa-fw"></i> Por favor corrige los siguentes errores:</h4>';
 					for(datos in data.errors)
 					{
 						errors += '<li>' + data.errors[datos] + '</li>'
@@ -33,14 +33,15 @@ $(document).ready(function()
 						errors += '</div>';
 					$('.error').html(errors);
 				}else{
-					$(formFecha)[0].reset();
-					$('.success').show().html(data.message);
-					//location.reload();
+					var successMessage = '';
+						successMessage += '<div class="alert alert-warning">';
+						successMessage += '<button type="button" class="close" data-dismiss="alert">&times;</button>';
+						successMessage += '<h4><i class="fa fa-check fa-fw"></i>' + data.message + '</h4>';
+						successMessage += '</div>';
+					$(formFecha)[0].reset();										
 					$('#myModal').modal('hide');
-					//Ejemplo
-					var task = '<tr id="task' + data.id + '"><td>' + data.id + '</td><td>' + data.task + '</td><td>' + data.description + '</td><td>' + data.created_at + '</td>';
-                task += '<td><button class="btn btn-warning btn-xs btn-detail open-modal" value="' + data.id + '">Edit</button>';
-                task += '<button class="btn btn-danger btn-xs btn-delete delete-task" value="' + data.id + '">Delete</button></td></tr>';
+					location.reload();
+					$('.success').show().html(successMessage);
 				}
 			},
 			error: function(errors)
