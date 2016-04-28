@@ -28,7 +28,6 @@
 	<!-- Scripts -->
 	<script src="{{ asset('js/jquery.min.js') }}"></script>
 	<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-	<script src="{{ asset('js/myScript.js') }}"></script>
 	<script>
 		$(function () {
   			$('[data-toggle="tooltip"]').tooltip()

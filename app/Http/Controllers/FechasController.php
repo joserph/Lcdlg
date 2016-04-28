@@ -26,17 +26,16 @@ class FechasController extends Controller
      */
     public function index()
     {
-        $fechas = Fecha::orderBy('id', 'desc')->paginate(10);
-        //$contador = 0;
-        //dd($fechas);
-        return view('admin.fechas.index')
-            ->with('fechas', $fechas);
-        /*
-        return response()->json([
-            'msg' => 'Success',
-            'fechas' => $fechas->toArray()
-            ], 200 
-        );*/
+        return view('admin.fechas.index');
+        
+    }
+
+    public function getList()
+    {
+        $fechas = Fecha::all();
+        return response()->json(
+            $fechas->toArray()
+        );
     }
 
     /**
@@ -109,7 +108,9 @@ class FechasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $fecha = Fecha::find($id);
+        return view('admin.fechas.edit')
+            ->with('fecha', $fecha);
     }
 
     /**

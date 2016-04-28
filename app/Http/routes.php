@@ -65,3 +65,4 @@ Route::resource('users', 'UsersController');
 
 //Fechas
 Route::resource('fechas', 'FechasController');
+Route::get('fecha', 'FechasController@getList');

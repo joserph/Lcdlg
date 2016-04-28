@@ -1,5 +1,29 @@
 $(document).ready(function()
 {
+	/*
+	 * List fecha.
+	 */
+	 var trDatos = $('#tr-fecha');
+	 var route = 'http://lcdlg.dev/fecha';
+	 $.get(route, function(respuesta)
+	 {
+	 	$(respuesta).each(function(key, value)
+	 	{
+	 		trDatos.append('<tr><td class="text-center">'+ value.fecha +'</td><td class="text-center">'+ value.tipo +'</td><td class="text-center"><button value='+ value.id +' onclick="Mostrar(this);" data-toggle="modal" data-target="#myModal2" class="btn btn-warning btn-xs"><i class="fa fa-edit fa-fw"></i> Editar</button> <button class="btn btn-danger btn-xs"><i class="fa fa-trash fa-fw"></i> Eliminar</button></td></tr>');
+	 	});
+	 });
+
+	 function Mostrar(boton)
+	 {
+	 	console.log(boton.value);
+	 }
+	 /*
+	 * End List fecha.
+	 */
+
+	/*
+	 * Add fecha.
+	 */
 	var formFecha = $('.add-fecha');
 	formFecha.on('submit', function()
 	{
@@ -52,4 +76,7 @@ $(document).ready(function()
 		});
 		return false;
 	});
+	/*
+	 * End Add fecha.
+	 */
 });

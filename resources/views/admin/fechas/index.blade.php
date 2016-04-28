@@ -48,19 +48,32 @@
                 <th class="text-center">Tipo</th>                 
                 <th class="text-center">Acción</th>                
             </tr>            
-            @foreach ($fechas as $item)
-            <tr class="td-fecha">                
-                <td class="text-center">{{ $item->fecha }}</td>
-                <!--<td class="text-center">{{ $item->url }}</td>-->
-                <td class="text-center">{{ $item->tipo }}</td>                
-                <td class="text-center">                                                                                  
-                    <a href="{{ route('fechas.edit', $item->id) }}" class="btn btn-warning btn-xs"><i class="fa fa-edit fa-fw"></i> Editar</a>                            
-                </td>                
-            </tr>
-            @endforeach
+            
+            <tbody id="tr-fecha"></tbody>
+            
         </table>
     </div>
     <!-- /.table -->
-    <div class="text-center">{!! $fechas->render() !!}</div>
     
+
+    <!-- Modal Edit-->
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"><i class="fa fa-plus-circle fa-fw"></i> Editar fecha</h4>
+                </div>
+                <div class="modal-body">
+                    @include('admin.fechas.edit')
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @section('scripts')
+        <script src="{{ asset('js/myScript.js') }}"></script>
+    @endsection
 @endsection
