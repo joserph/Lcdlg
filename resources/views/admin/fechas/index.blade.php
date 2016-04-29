@@ -20,6 +20,10 @@
     <div class="text-center before"></div>
     
     <div class="success"></div>
+    <div class="alert alert-danger deleteFecha" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <p><i class="fa fa-trash fa-fw"></i> Fecha eliminada con exito!</p>
+    </div>
     <!-- Modal Add-->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -65,6 +69,7 @@
                     <h4 class="modal-title" id="myModalLabel"><i class="fa fa-plus-circle fa-fw"></i> Editar fecha</h4>
                 </div>
                 <div class="modal-body">
+                    
                     @include('admin.fechas.edit')
                 </div>
                 <div class="modal-footer">
@@ -75,5 +80,6 @@
     </div>
     @section('scripts')
         <script src="{{ asset('js/myScript.js') }}"></script>
+
     @endsection
 @endsection

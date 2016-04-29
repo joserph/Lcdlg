@@ -108,9 +108,15 @@ class FechasController extends Controller
      */
     public function edit($id)
     {
+        
         $fecha = Fecha::find($id);
-        return view('admin.fechas.edit')
+
+        /*return view('admin.fechas.edit')
             ->with('fecha', $fecha);
+        */
+        return response()->json(
+            $fecha->toArray()
+        );
     }
 
     /**
@@ -122,7 +128,16 @@ class FechasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $fecha = Fecha::find($id);
+        $fecha->fill($request->all());
+        $fecha->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Fecha actualizada con exito!'
+        ]);
+              
     }
 
     /**
@@ -133,6 +148,12 @@ class FechasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $fecha = Fecha::find($id);
+        $fecha->delete();
+        flash()->error('<i class="fa fa-trash fa-fw"></i> Fecha eliminada con exito!.');
+        return response()->json([
+            'success' => true,
+            'message' => 'Fecha eliminada con exito!'
+        ]);
     }
 }
