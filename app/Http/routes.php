@@ -59,10 +59,11 @@ Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 // Admin
 Route::resource('admin', 'AdminController');
-
 // Users
 Route::resource('users', 'UsersController');
-
 //Fechas
 Route::resource('fechas', 'FechasController');
 Route::get('fecha', 'FechasController@getList');
+//Predicadores
+Route::resource('predicadores', 'PredicadoresController');
+Route::get('predicador', 'PredicadoresController@getList');

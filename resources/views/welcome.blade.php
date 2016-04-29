@@ -42,12 +42,12 @@
   		<div class="col-sm-6 col-md-4">
     		<div class="thumbnail">
     			<div class="text-center">
-					<h3><i class="fa fa-users fa-fw fa-5x"></i></h3>
+					<h3><i class="fa fa-bullhorn fa-fw fa-5x"></i></h3>
       			</div>
       			<div class="caption">
-			        <h3>Thumbnail label</h3>
-			        <p>...</p>
-			        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+			        <h3>Predicadores</h3>
+			        <p>Ver y editar los predicadores.</p>
+			        <p><a href="{{ route('predicadores.index') }}" class="btn btn-primary" role="button">Ver predicadores</a></p>
       			</div>
     		</div>
   		</div>

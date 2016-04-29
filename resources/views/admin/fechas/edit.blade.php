@@ -14,5 +14,5 @@
 	</div>
 </div><br>
 	
-<button tipe="submit" class="btn btn-success" id="edit-fecha"><i class="fa fa-plus-circle"></i> Actualizar</button>
+<button tipe="submit" class="btn btn-warning" id="edit-fecha"><i class="fa fa-plus-circle"></i> Actualizar</button>
 

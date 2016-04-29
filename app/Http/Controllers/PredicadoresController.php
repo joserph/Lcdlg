@@ -6,13 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Fecha;
+use App\Predicador;
 use Validator;
 
-
-class FechasController extends Controller
+class PredicadoresController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -26,18 +24,16 @@ class FechasController extends Controller
      */
     public function index()
     {
-        return view('admin.fechas.index');
-        
+        return view('admin.predicadores.index');
     }
 
     public function getList()
     {
-        $fechas = Fecha::orderBy('id', 'desc')->get();
+        $predicadores = Predicador::orderBy('id', 'desc')->get();
         return response()->json(
-            $fechas->toArray()
+            $predicadores->toArray()
         );
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -45,7 +41,7 @@ class FechasController extends Controller
      */
     public function create()
     {
-        return view('admin.fechas.form');
+        return view('admin.predicadores.form');
     }
 
     /**
@@ -60,8 +56,7 @@ class FechasController extends Controller
         {
             //Validamos 
             $validator = Validator::make($request->all(), [
-                'fecha' => 'required|unique:fechas',
-                'tipo'  => 'required'
+                'nombre' => 'required|unique:predicadores'
             ]);
             //Validamos si falla
             if($validator->fails())
@@ -72,21 +67,20 @@ class FechasController extends Controller
                 ]);
             }else{
                 //Si todo va bién
-                $fecha = new Fecha($request->all());
+                $predicador = new Predicador($request->all());
                 //Guardamos
-                $fecha->save();
+                $predicador->save();
                 //Si lo guarda
-                if($fecha)
+                if($predicador)
                 {
                     return response()->json([
                         'success'   => true,
-                        'message'   => 'Fehca agregada con exito!',
-                        'fecha'     => $fecha->toArray()
+                        'message'   => 'Predicador ' . $predicador->nombre . ' se agregó con exito!',
+                        'predicador'     => $predicador->toArray()
                     ]);
                 }
             }
         }
-        
     }
 
     /**
@@ -108,14 +102,9 @@ class FechasController extends Controller
      */
     public function edit($id)
     {
-        
-        $fecha = Fecha::find($id);
-
-        /*return view('admin.fechas.edit')
-            ->with('fecha', $fecha);
-        */
+        $predicador = Predicador::find($id);
         return response()->json(
-            $fecha->toArray()
+            $predicador->toArray()
         );
     }
 
@@ -128,16 +117,17 @@ class FechasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        $fecha = Fecha::find($id);
-        $fecha->fill($request->all());
-        $fecha->save();
-
+        if(\request::ajax())
+        {
+            $predicador = Predicador::find($id);
+        $predicador->fill($request->all());
+        $predicador->save();
         return response()->json([
-            'success' => true,
-            'message' => 'Fecha actualizada con exito!'
+            'success'   => true,
+            'message'   => 'Predicador ' . $predicador->nombre . ' se actualizó con exito!'
         ]);
-              
+        }
+        
     }
 
     /**
@@ -148,12 +138,6 @@ class FechasController extends Controller
      */
     public function destroy($id)
     {
-        $fecha = Fecha::find($id);
-        $fecha->delete();
-        flash()->error('<i class="fa fa-trash fa-fw"></i> Fecha eliminada con exito!.');
-        return response()->json([
-            'success' => true,
-            'message' => 'Fecha eliminada con exito!'
-        ]);
+        //
     }
 }
