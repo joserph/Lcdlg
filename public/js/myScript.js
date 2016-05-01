@@ -102,6 +102,7 @@ $(document).ready(function()
 		return false;
 	});
 	ListPredicador();
+	$('.deletePredicador').hide();
 	// End predicadores
 	/*
 	 * ******************** End Add. ********************
@@ -145,7 +146,7 @@ function ListPredicador()
 	{
 		$(respuesta).each(function(key, value)
 		{
-			trDatos.append('<tr><td class="text-center">'+ value.nombre +'</td><td class="text-center"><button value='+ value.id +' onclick="ShowPredicador(this);" data-toggle="modal" data-target="#myModal2" class="btn btn-warning btn-xs"><i class="fa fa-edit fa-fw"></i> Editar</button> <button class="btn btn-danger btn-xs"> Eliminar</button></td></tr>')
+			trDatos.append('<tr><td class="text-center">'+ value.nombre +'</td><td class="text-center"><button value='+ value.id +' onclick="ShowPredicador(this);" data-toggle="modal" data-target="#myModal3" class="btn btn-warning btn-xs"><i class="fa fa-edit fa-fw"></i> Editar</button> <button value='+ value.id +' onclick="DeletePredicador(this);" class="btn btn-danger btn-xs"><i class="fa fa-trash fa-fw"></i> Eliminar</button></td></tr>')
 		});
 	});
 }
@@ -205,7 +206,7 @@ $('#edit-fecha').click(function()
 $('#edit-predicador').click(function()
 {
 	var id = $('#id').val();
-	var nombre = $('#nombreEdit');
+	var nombre = $('#nombreEdit').val();
 	var route = 'http://lcdlg.dev/predicadores/'+id+'';
 	var token = $('#token').val();
 
@@ -227,7 +228,7 @@ $('#edit-predicador').click(function()
 				successMessage += '<p><i class="fa fa-check fa-fw"></i>' + data.message + '</p>';
 				successMessage += '</div>';
 				ListPredicador();
-				$('#myModal2').modal('hide');
+				$('#myModal3').modal('hide');
 				$('.success').show().html(successMessage).fadeOut(4000);
 			}
 		}
@@ -240,6 +241,7 @@ $('#edit-predicador').click(function()
  /*
  * ******************** Eliminar. ********************
  */
+ // Fechas
 function Eliminar(boton)
 {
 	var route = 'http://lcdlg.dev/fechas/'+boton.value+'';
@@ -258,9 +260,31 @@ function Eliminar(boton)
 				$('.deleteFecha').show().fadeOut(4000);		
 			}
 		});
-	}
-	
+	}	
 }
+// End Fechas
+// Predicadores
+function DeletePredicador(boton)
+{
+	var route = 'http://lcdlg.dev/predicadores/'+boton.value+'';
+	var token = $('#token').val();
+	var action = confirm("¿Seguro de eliminar fecha?");
+	if(action)
+	{
+		$.ajax({
+			url: route,
+			headers: {'X-CSRF-TOKEN': token},
+			type: 'DELETE',
+			dataType: 'json',
+			success: function()
+			{
+				ListPredicador();
+				$('.deletePredicador').show().fadeOut(4000);
+			}
+		});
+	}
+}
+// End predicadores
 /*
 * ******************** End Eliminar. ********************
 */

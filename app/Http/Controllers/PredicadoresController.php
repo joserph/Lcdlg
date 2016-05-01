@@ -117,17 +117,13 @@ class PredicadoresController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(\request::ajax())
-        {
-            $predicador = Predicador::find($id);
+        $predicador = Predicador::find($id);
         $predicador->fill($request->all());
         $predicador->save();
         return response()->json([
             'success'   => true,
             'message'   => 'Predicador ' . $predicador->nombre . ' se actualizó con exito!'
-        ]);
-        }
-        
+        ]);        
     }
 
     /**
@@ -138,6 +134,11 @@ class PredicadoresController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $predicador = Predicador::find($id);
+        $predicador->delete();
+        return response()->json([
+            'success'   => true,
+            'message'   => 'Predicador ' . $predicador->nombre . ' se eliminó con exito!'   
+        ]);
     }
 }

@@ -19,7 +19,7 @@
     </div>
 	
 	<div class="success"></div>
-    <div class="alert alert-danger deleteFecha" role="alert">
+    <div class="alert alert-danger deletePredicador" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <p><i class="fa fa-trash fa-fw"></i> Predicador eliminado con exito!</p>
     </div>
@@ -58,7 +58,7 @@
     <!-- /.table -->
 	
 	<!-- Modal Edit-->
-    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
