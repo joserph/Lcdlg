@@ -173,6 +173,7 @@ $('#edit-fecha').click(function()
 	var value = $('#id').val();
 	var fecha = $('#fechaEdit').val();
 	var tipo = $('#tipoEdit').val();
+	var updateUser = $('#updateUser').val();
 	var route = 'http://lcdlg.dev/fechas/'+value+'';
 	var token = $("#token").val();
 
@@ -181,7 +182,7 @@ $('#edit-fecha').click(function()
 		headers: {'X-CSRF-TOKEN': token},
 		type: 'PUT',
 		dataType: 'json',
-		data: {fecha: fecha, tipo: tipo},
+		data: {fecha: fecha, tipo: tipo, update_user: updateUser},
 		success: function(data)
 		{
 			if(data.success == false)
@@ -207,6 +208,7 @@ $('#edit-predicador').click(function()
 {
 	var id = $('#id').val();
 	var nombre = $('#nombreEdit').val();
+	var updateUser = $('#updateUser').val();
 	var route = 'http://lcdlg.dev/predicadores/'+id+'';
 	var token = $('#token').val();
 
@@ -215,7 +217,7 @@ $('#edit-predicador').click(function()
 		headers: {'X-CSRF-TOKEN': token},
 		type: 'PUT',
 		dataType: 'json',
-		data: {nombre: nombre},
+		data: {nombre: nombre, update_user: updateUser},
 		success: function(data)
 		{
 			if(data.success == false)

@@ -1,5 +1,7 @@
 <div class="error"></div>
 {!! Form::open(['route' => 'fechas.store', 'class' => 'add-fecha']) !!}
+    {!! Form::hidden('id_user', Auth::user()->id) !!}
+    {!! Form::hidden('update_user', Auth::user()->id) !!}
 	{!! Form::label('fecha', 'Fecha') !!}
 	<div class="row">
     		<div class="col-md-6">
