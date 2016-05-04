@@ -47,7 +47,7 @@
             <tr>
                 
                 <th class="text-center">Fecha</th>
-                <!--<th class="text-center">Slug</th> -->
+                <th class="text-center">Slug</th>
                 <th class="text-center">Tipo</th>                 
                 <th class="text-center">Acción</th>                
             </tr>            

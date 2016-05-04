@@ -10,5 +10,5 @@
 </div>
 <br>
 
-<button tipe="submit" class="btn btn-success" id="edit-predicador"><i class="fa fa-plus-circle"></i> Agregar</button>
+<button tipe="submit" class="btn btn-warning" id="edit-predicador"><i class="fa fa-refresh"></i> Actualizar</button>
 
