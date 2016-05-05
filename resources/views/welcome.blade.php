@@ -34,7 +34,7 @@
       			</div>
       			<div class="caption">
 			        <h3>Fechas</h3>
-			        <p>Ver y editar los tags fechas.</p>
+			        <p>Ver, crear y editar los tags fechas.</p>
 			        <p><a href="{{ route('fechas.index') }}" class="btn btn-primary" role="button">Ver fechas</a></p>
       			</div>
     		</div>
@@ -46,8 +46,20 @@
       			</div>
       			<div class="caption">
 			        <h3>Predicadores</h3>
-			        <p>Ver y editar los predicadores.</p>
+			        <p>Ver, crear y editar los predicadores.</p>
 			        <p><a href="{{ route('predicadores.index') }}" class="btn btn-primary" role="button">Ver predicadores</a></p>
+      			</div>
+    		</div>
+  		</div>
+  		<div class="col-sm-6 col-md-4">
+    		<div class="thumbnail">
+    			<div class="text-center">
+					<h3><i class="fa fa-play fa-fw fa-5x"></i></h3>
+      			</div>
+      			<div class="caption">
+			        <h3>Predicas</h3>
+			        <p>Ver, crear y editar los predicas.</p>
+			        <p><a href="{{ route('predicas.index') }}" class="btn btn-primary" role="button">Ver predicas</a></p>
       			</div>
     		</div>
   		</div>

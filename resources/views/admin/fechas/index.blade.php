@@ -7,12 +7,12 @@
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
-                Fechas 
+                <i class="fa fa-calendar fa-fw"></i> Fechas 
                 <button type="button" class="pull-right btn btn-success" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle fa-fw"></i> Agregar</button>
             </h2>
             <ol class="breadcrumb">
                 <li class="active">
-                    <i class="fa fa-calendar fa-fw"></i> Fechas registradas
+                    <i class="fa fa-bars fa-fw"></i> Lista de fechas
                 </li>
             </ol>
         </div>

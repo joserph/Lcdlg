@@ -7,11 +7,11 @@
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
-                Administración de Usuarios 
+                <i class="fa fa-users fa-fw"></i> Administración de Usuarios 
             </h2>
             <ol class="breadcrumb">
                 <li class="active">
-                    <i class="fa fa-users fa-fw"></i> Usuarios registrados
+                    <i class="fa fa-bars fa-fw"></i> Lista de usuarios registrados
                 </li>
             </ol>
         </div>

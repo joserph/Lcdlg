@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Predica;
+use Laracasts\Flash\Flash;
 
 class PredicasController extends Controller
 {
@@ -26,7 +28,7 @@ class PredicasController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.predicas.form');
     }
 
     /**
@@ -37,7 +39,10 @@ class PredicasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $predica = new Predica($request->all());
+        $predica->save();
+        flash()->success('<i class="fa fa-check fa-fw"></i> La predica <b>' . $predica->title . '</b> se agregó con exito!');
+        return redirect()->route('predicas.index');
     }
 
     /**
