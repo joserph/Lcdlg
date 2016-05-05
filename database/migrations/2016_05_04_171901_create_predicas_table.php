@@ -15,23 +15,30 @@ class CreatePredicasTable extends Migration
         Schema::create('predicas', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('title', 80);
-            $table->string('url', 80);
-            $table->string('predicador', 30);
-            $table->string('mes', 15);
-            $table->string('anio', 15);
-            $table->string('fecha', 80);
+            $table->string('title');
+            $table->string('url');//Cambiar a slug
+            $table->string('predicador');//Eliminar
+            $table->string('mes');//Eliminar
+            $table->string('anio');//Eliminar
+            $table->string('fecha');//Cambiar a date
             $table->string('content', 50000);
             $table->string('estatus');
             $table->integer('id_user');
-            $table->string('tipo', 20);
+            $table->string('tipo');//colocar enum('predica', 'post')
             $table->integer('update_user');
-            $table->string('audio', 500);
-            $table->string('video', 600);
-            $table->string('f_name', 200);
-            $table->string('f_ruta', 500);
-            $table->string('f_exten', 5);
-            $table->string('comentario', 2);
+            $table->string('audio');
+            $table->string('video');
+            $table->string('f_name');
+            $table->string('f_ruta');
+            $table->string('f_exten');
+            $table->string('comentario');//Hacer una tabla (Eliminar)
+
+            $table->integer('id_predicador')->unsigned();
+            $table->foreign('id_predicador')->references('id')->on('predicadores');
+            $table->integer('id_mes')->unsigned();
+            $table->foreign('id_mes')->references('id')->on('fechas');
+            $table->integer('id_anio')->unsigned();
+            $table->foreign('id_anio')->references('id')->on('fechas');
             // NO HE REALIZADO LA MIGRACION YA QUE DEBO ANALIZAR MEJOR EL MODEO DE LA DB.
 
             $table->timestamps();

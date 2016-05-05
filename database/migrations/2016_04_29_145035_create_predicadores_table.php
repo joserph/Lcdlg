@@ -16,9 +16,9 @@ class CreatePredicadoresTable extends Migration
             $table->increments('id');
 
             $table->string('nombre');
-            $table->string('url');
+            $table->string('url');//Eliminar
             $table->integer('id_user');
-            $table->string('tipo');
+            $table->string('tipo');//Eliminar
             $table->integer('update_user');
 
             $table->timestamps();

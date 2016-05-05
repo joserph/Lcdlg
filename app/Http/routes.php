@@ -67,3 +67,5 @@ Route::get('fecha', 'FechasController@getList');
 //Predicadores
 Route::resource('predicadores', 'PredicadoresController');
 Route::get('predicador', 'PredicadoresController@getList');
+//Predicas
+Route::resource('predicas', 'PredicasController');

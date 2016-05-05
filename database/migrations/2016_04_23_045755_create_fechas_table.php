@@ -16,7 +16,7 @@ class CreateFechasTable extends Migration
             $table->increments('id');
 
             $table->string('fecha');
-            $table->string('url');
+            $table->string('url');//Eliminar
             $table->string('tipo');
             $table->integer('id_user');
             $table->integer('update_user');
