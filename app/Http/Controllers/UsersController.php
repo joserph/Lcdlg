@@ -24,7 +24,11 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        $contador = 0;
+        return view('users.index')
+            ->with('users', $users)
+            ->with('contador', $contador);
     }
 
     /**

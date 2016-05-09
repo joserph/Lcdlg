@@ -18,4 +18,9 @@ class Fecha extends Model implements SluggableInterface
     protected $table = 'fechas';
 
     protected $fillable = ['fecha', 'tipo', 'id_user', 'update_user'];
+
+    public function predicas()
+    {
+    	return $this->hasMany('App\Predica');
+    }
 }

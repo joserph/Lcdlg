@@ -18,4 +18,9 @@ class Predicador extends Model implements SluggableInterface
     protected $table = 'predicadores';
 
     protected $fillable = ['nombre', 'id_user', 'update_user'];
+
+    public function predicas()
+    {
+    	return $this->hasMany('App\Predica');
+    }
 }

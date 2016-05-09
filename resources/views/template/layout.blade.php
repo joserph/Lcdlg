@@ -7,7 +7,10 @@
 	<title>@yield('title', 'Panel de Administración')</title>
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/sb-admin.css') }}">
+    <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/chosen/chosen.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/trumbowyg/ui/trumbowyg.css') }}">
 
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -19,15 +22,22 @@
 </head>
 <body>
 	<div id="wrapper">
-		<div class="container">
-			@include('template.nav')
-			
-			@yield('content')
-		</div>		
+		@include('template.nav')
+		<div id="page-wrapper">
+	        <div class="container-fluid">
+		        <div class="row">
+		            <div class="col-lg-12">			
+						@yield('content')
+					</div>
+				</div>
+			</div>		
+		</div>
 	</div>
 	<!-- Scripts -->
 	<script src="{{ asset('js/jquery.min.js') }}"></script>
 	<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('plugins/chosen/chosen.jquery.js') }}"></script>
+	<script src="{{ asset('plugins/trumbowyg/trumbowyg.js') }}"></script>
 	<script>
 		$(function () {
   			$('[data-toggle="tooltip"]').tooltip()

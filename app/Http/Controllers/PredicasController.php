@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Predica;
 use Laracasts\Flash\Flash;
+use App\Fecha;
+use App\Predicador;
 
 class PredicasController extends Controller
 {
@@ -28,7 +30,13 @@ class PredicasController extends Controller
      */
     public function create()
     {
-        return view('admin.predicas.form');
+        $meses = Fecha::where('tipo', '=', 'mes')->orderBy('id', 'DESC')->lists('fecha', 'id');
+        $anios = Fecha::where('tipo', '=', 'año')->orderBy('id', 'DESC')->lists('fecha', 'id');
+        $predicador = Predicador::orderBy('id', 'DESC')->lists('nombre', 'id');
+        return view('admin.predicas.form')
+            ->with('meses', $meses)
+            ->with('anios', $anios)
+            ->with('predicador', $predicador);
     }
 
     /**

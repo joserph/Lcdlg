@@ -12,6 +12,8 @@
     </ul>
     <!-- Form -->
 	{!! Form::open(['route' => 'predicas.store']) !!}
+        {!! Form::hidden('id_user', Auth::user()->id) !!}
+        {!! Form::hidden('update_user', Auth::user()->id) !!}
         {!! Form::label('title', 'Título') !!}
         <div class="row">
             <div class="col-md-10">
@@ -24,40 +26,40 @@
                 {!! Form::date('fecha', null, ['class' => 'form-control', 'placeholder' => 'dd/mm/aaaa']) !!}
             </div>
         </div>
-        {!! Form::label('mes', 'Mes') !!}
+        {!! Form::label('id_mes', 'Mes') !!}
         <div class="row">
             <div class="col-md-5">
-                {!! Form::text('mes', null, ['class' => 'form-control', 'placeholder' => 'Tag mes de la predica']) !!}
+                {!! Form::select('id_mes', $meses, null, ['class' => 'form-control select-mes', 'placeholder' => 'Seleccione tag mes']) !!}
             </div>
         </div>
-        {!! Form::label('anio', 'Año') !!}
+        {!! Form::label('id_anio', 'Año') !!}
         <div class="row">
             <div class="col-md-5">
-                {!! Form::text('anio', null, ['class' => 'form-control', 'placeholder' => 'Tag año de la predica']) !!}
+                {!! Form::select('id_anio', $anios, null, ['class' => 'form-control select-anio', 'placeholder' => 'Seleccione tag año']) !!}
             </div>
         </div>
-        {!! Form::label('predicador', 'Predicador') !!}
+        {!! Form::label('id_predicador', 'Predicador') !!}
         <div class="row">
             <div class="col-md-5">
-                {!! Form::text('predicador', null, ['class' => 'form-control', 'placeholder' => 'Seleccione predicador']) !!}
+                {!! Form::select('id_predicador', $predicador, null, ['class' => 'form-control select-pre', 'placeholder' => 'Seleccione predicador']) !!}
             </div>
         </div>
         {!! Form::label('content', 'Contenido') !!}
         <div class="row">
             <div class="col-md-10">
-                {!! Form::textarea('content', null, ['class' => 'form-control', 'placeholder' => 'Contenido de la predica']) !!}
+                {!! Form::textarea('content', null, ['class' => 'form-control content', 'placeholder' => 'Contenido de la predica']) !!}
             </div>
         </div>
         {!! Form::label('audio', 'Audio') !!}
         <div class="row">
             <div class="col-md-10">
-                {!! Form::textarea('audio', null, ['class' => 'form-control', 'placeholder' => 'Colocar audio']) !!}
+                {!! Form::textarea('audio', null, ['class' => 'form-control audio', 'placeholder' => 'Colocar audio']) !!}
             </div>
         </div>
         {!! Form::label('video', 'Video') !!}
         <div class="row">
             <div class="col-md-10">
-                {!! Form::textarea('video', null, ['class' => 'form-control', 'placeholder' => 'Colocar video']) !!}
+                {!! Form::textarea('video', null, ['class' => 'form-control video', 'placeholder' => 'Colocar video']) !!}
             </div>
         </div>
         {!! Form::label('estatus', 'Estatus') !!}
@@ -73,4 +75,15 @@
         <br>   
         {!! Form::button('<i class="fa fa-plus-circle fa-fw"></i> Agregar', ['type' => 'submit', 'class' => 'btn btn-success']) !!} 
     {!! Form::close() !!}
+
+    @section('scripts')
+        <script>
+            $('.select-mes').chosen();
+            $('.select-anio').chosen();
+            $('.select-pre').chosen();
+            $('.content').trumbowyg();
+            $('.audio').trumbowyg();
+            $('.video').trumbowyg();
+        </script>
+    @endsection
 @endsection

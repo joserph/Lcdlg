@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Fecha;
+use App\Predicador;
+use App\Predica;
 
 class AdminController extends Controller
 {
@@ -22,11 +25,16 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        $contador = 0;
+        $countUsers = User::count();
+        $countFechas = Fecha::count();
+        $countPredicadores = Predicador::count();
+        $countPredicas = Predica::count();
+        //dd($countUsers);
         return view('admin.index')
-            ->with('users', $users)
-            ->with('contador', $contador);
+            ->with('countUsers', $countUsers)
+            ->with('countFechas', $countFechas)
+            ->with('countPredicadores', $countPredicadores)
+            ->with('countPredicas', $countPredicas);
     }
 
     /**
