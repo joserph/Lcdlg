@@ -21,14 +21,20 @@
     <!-- .table -->
     <div class="table-responsive">
         <table class="table table-striped table-hover table-responsive">
-            <tr>
-                
-                <th class="text-center">Nombre</th>
-                <th class="text-center">Slug</th>         
+            <tr>                
+                <th class="text-center">Título</th>
+                <th class="text-center">Predicador</th>         
+                <th class="text-center">Fecha</th> 
                 <th class="text-center">Acción</th>                
-            </tr>            
-            
-            <tbody id="tr-predicador"></tbody>
+            </tr>
+            @foreach($predicas as $item) 
+            <tr>
+                <td>{{ $item->title }} </td>
+                <td>{{ $item->predicador }} </td>
+                <td>{{ $item->fecha }} </td>
+                <td></td>
+            </tr>          
+            @endforeach
             
         </table>
     </div>

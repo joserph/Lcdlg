@@ -20,7 +20,15 @@ class PredicasController extends Controller
      */
     public function index()
     {
-        return view('admin.predicas.index');
+        $predicas = Predica::orderBy('id', 'DESC')->paginate(10);
+        $predicas->each(function($predicas){
+            //$predicas->fecha;
+            $predicas->predicador;
+            //$predicas->user;
+        });
+        dd($predicas);
+        return view('admin.predicas.index')
+            ->with('predicas', $predicas);
     }
 
     /**
@@ -32,11 +40,11 @@ class PredicasController extends Controller
     {
         $meses = Fecha::where('tipo', '=', 'mes')->orderBy('id', 'DESC')->lists('fecha', 'id');
         $anios = Fecha::where('tipo', '=', 'año')->orderBy('id', 'DESC')->lists('fecha', 'id');
-        $predicador = Predicador::orderBy('id', 'DESC')->lists('nombre', 'id');
+        $predicadores = Predicador::orderBy('id', 'DESC')->lists('nombre', 'id');
         return view('admin.predicas.form')
             ->with('meses', $meses)
             ->with('anios', $anios)
-            ->with('predicador', $predicador);
+            ->with('predicadores', $predicadores);
     }
 
     /**

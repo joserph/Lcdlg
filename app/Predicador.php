@@ -21,6 +21,6 @@ class Predicador extends Model implements SluggableInterface
 
     public function predicas()
     {
-    	return $this->hasMany('App\Predica');
+        return $this->hasMany('App\Predica');
     }
 }

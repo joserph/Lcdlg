@@ -26,22 +26,22 @@
                 {!! Form::date('fecha', null, ['class' => 'form-control', 'placeholder' => 'dd/mm/aaaa']) !!}
             </div>
         </div>
-        {!! Form::label('id_mes', 'Mes') !!}
+        {!! Form::label('mes_id', 'Mes') !!}
         <div class="row">
             <div class="col-md-5">
-                {!! Form::select('id_mes', $meses, null, ['class' => 'form-control select-mes', 'placeholder' => 'Seleccione tag mes']) !!}
+                {!! Form::select('mes_id', $meses, null, ['class' => 'form-control select-mes', 'placeholder' => 'Seleccione tag mes']) !!}
             </div>
         </div>
-        {!! Form::label('id_anio', 'Año') !!}
+        {!! Form::label('anio_id', 'Año') !!}
         <div class="row">
             <div class="col-md-5">
-                {!! Form::select('id_anio', $anios, null, ['class' => 'form-control select-anio', 'placeholder' => 'Seleccione tag año']) !!}
+                {!! Form::select('anio_id', $anios, null, ['class' => 'form-control select-anio', 'placeholder' => 'Seleccione tag año']) !!}
             </div>
         </div>
-        {!! Form::label('id_predicador', 'Predicador') !!}
+        {!! Form::label('predicador_id', 'Predicador') !!}
         <div class="row">
             <div class="col-md-5">
-                {!! Form::select('id_predicador', $predicador, null, ['class' => 'form-control select-pre', 'placeholder' => 'Seleccione predicador']) !!}
+                {!! Form::select('predicador_id', $predicadores, null, ['class' => 'form-control select-pre', 'placeholder' => 'Seleccione predicador']) !!}
             </div>
         </div>
         {!! Form::label('content', 'Contenido') !!}
