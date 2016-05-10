@@ -10,18 +10,13 @@ class Predica extends Model
 
     protected $fillable = ['title', 'fecha', 'content', 'estatus', 'id_user', 'update_user', 'audio', 'video', 'predicador_id', 'mes_id', 'anio_id'];
 
-    public function fecha()
+    public function user()
     {
-    	return $this->belongsTo('App\Fecha', 'mes_id', 'anio_id');
+    	return $this->belongsTo('App\User', 'id_user');
     }
 
     public function predicador()
     {
-    	return $this->belongsTo('App\Predicador', 'predicador_id');
-    }
-
-    public function user()
-    {
-    	return $this->belongsTo('App\User', 'id_user');
+        return $this->belongsTo('App\Predicador', 'predicador_id');
     }
 }

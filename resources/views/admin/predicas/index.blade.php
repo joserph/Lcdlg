@@ -30,7 +30,7 @@
             @foreach($predicas as $item) 
             <tr>
                 <td>{{ $item->title }} </td>
-                <td>{{ $item->predicador }} </td>
+                <td>{{ $item->user->name }}</td>
                 <td>{{ $item->fecha }} </td>
                 <td></td>
             </tr>          
@@ -39,4 +39,5 @@
         </table>
     </div>
     <!-- /.table -->
+    {!! $predicas->render() !!}
 @endsection

@@ -20,12 +20,13 @@ class PredicasController extends Controller
      */
     public function index()
     {
-        $predicas = Predica::orderBy('id', 'DESC')->paginate(10);
-        $predicas->each(function($predicas){
-            //$predicas->fecha;
+        $predicas = Predica::with('predicador', 'user')->orderBy('id', 'DESC')->paginate(10);
+        $predicas->each(function($predicas)
+        {
+            $predicas->user;
             $predicas->predicador;
-            //$predicas->user;
         });
+        
         dd($predicas);
         return view('admin.predicas.index')
             ->with('predicas', $predicas);

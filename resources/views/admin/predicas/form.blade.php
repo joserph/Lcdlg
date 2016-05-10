@@ -12,8 +12,8 @@
     </ul>
     <!-- Form -->
 	{!! Form::open(['route' => 'predicas.store']) !!}
-        {!! Form::hidden('id_user', Auth::user()->id) !!}
-        {!! Form::hidden('update_user', Auth::user()->id) !!}
+        {!! Form::hidden('id_user', \Auth::user()->id) !!}
+        {!! Form::hidden('update_user', \Auth::user()->id) !!}
         {!! Form::label('title', 'Título') !!}
         <div class="row">
             <div class="col-md-10">
